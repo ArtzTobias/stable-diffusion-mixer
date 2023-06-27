@@ -538,8 +538,9 @@ if __name__ == "__main__":
     from ldm.util import count_params
     sentences = ["a hedgehog drinking a whiskey", "der mond ist aufgegangen", "Ein Satz mit vielen Sonderzeichen: äöü ß ?! : 'xx-y/@s'"]
     model = FrozenT5Embedder(version="google/t5-v1_1-xl").cuda()
+    print("hey1")
     count_params(model, True)
-    print("hey")
+    print("hey2")
     #z = model(sentences)
     #print(z.shape)
 
