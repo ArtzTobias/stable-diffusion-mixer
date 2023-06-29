@@ -138,6 +138,23 @@ def change_visible(txt1, im1, val):
         outputs[txt1] = gr.update(visible=False)
     return outputs
 
+#my code
+# run model and save output
+
+#get input
+inputs = sys.argv[1]
+
+#execute model mixer
+output_image = run(inputs)
+
+#save image
+save_image(output_image)
+
+print("generated_and_saved (me)")
+
+#end my code
+
+
 
 with gr.Blocks(title="Image Mixer", css=".gr-box {border-color: #8136e2}") as demo:
 
@@ -229,16 +246,3 @@ The model was trained on a subset of LAION Improved Aesthetics at a resolution o
 """)
 
 demo.launch(share=True)
-
-# run model and save output
-
-#get input
-inputs = sys.argv[1]
-
-#execute model mixer
-output_image = run(inputs)
-
-#save image
-save_image(output_image)
-
-
