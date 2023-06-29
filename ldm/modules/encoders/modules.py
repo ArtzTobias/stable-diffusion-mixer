@@ -541,12 +541,12 @@ if __name__ == "__main__":
     print("hey1")
     count_params(model, True)
     print("hey2")
-    #z = model(sentences)
-    #print(z.shape)
+    z = model(sentences)
+    print(z.shape)
 
-    #model = FrozenCLIPEmbedder().cuda()
-    #count_params(model, True)
-    #z = model(sentences)
-    #print(z.shape)
+    model = FrozenCLIPEmbedder().cuda()
+    count_params(model, True)
+    z = model(sentences)
+    print(z.shape)
 
     print("done.")
