@@ -15,6 +15,8 @@ import clip
 
 from PIL import Image
 
+import sys
+
 from huggingface_hub import hf_hub_download
 ckpt = hf_hub_download(repo_id="lambdalabs/image-mixer", filename="image-mixer-pruned.ckpt")
 config = hf_hub_download(repo_id="lambdalabs/image-mixer", filename="image-mixer-config.yaml")
@@ -28,6 +30,13 @@ clip_model, preprocess = clip.load("ViT-L/14", device=device)
 n_inputs = 5
 
 torch.cuda.empty_cache()
+
+# my image saver
+def save_image(image):
+  folder_name = "results"
+  os.makedirs(folder_name, exist_ok=True)
+
+  image.save(f"{folder_name}/result.jpg")
 
 @functools.lru_cache()
 def get_url_im(t):
@@ -220,3 +229,16 @@ The model was trained on a subset of LAION Improved Aesthetics at a resolution o
 """)
 
 demo.launch(share=True)
+
+# run model and save output
+
+#get input
+inputs = sys.argv[1]
+
+#execute model mixer
+output_image = run(inputs)
+
+#save image
+save_image(output_image)
+
+
